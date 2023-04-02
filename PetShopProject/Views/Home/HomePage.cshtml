@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = "_Layout";
+    var topAnimals = ViewData["topAnimals"] as List<Animal>;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>HomePage</title>
+</head>
+<body >
+    <div>
+        @foreach (Animal animal in topAnimals!)
+        {
+            <div class="card shadow p-3 mb-5 bg-body-tertiary rounded" data-aos="zoom-in-up"  style="width:500">
+                <img src="@animal.ImageName" class="card-img-top" alt="..." width="250">
+                <div class="card-body">
+                    <h4 class="card-title">@animal.Name</h4>
+                    <h5 class="card-title">Age: @animal.Age</h5>
+                    <a asp-controller="Home" asp-action="DetailsPage" asp-route-id="@animal.AnimalId" class="btn btn-primary" style="width:150px">More Details</a>
+                </div>
+            </div>
+        }  
+    </div>    
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = "_Layout";
+    var animal = ViewBag.animalDetails as Animal;
+    var category = ViewBag.Category as Category;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <div>
+        <a asp-controller="Admin" asp-action="AdminHome" style="width:250px" class="btn btn-primary">Back Admin Home</a>
+    </div>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <form asp-action="DeleteAnimal" method="post">
+            <div>
+                <div class="card shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 250;">
+                    <img src="\@animal!.ImageName" class="card-img-top" alt="..." width="250">
+                    <div class="card-body">
+                        <h5 class="card-title">@animal.Name</h5>
+                        <div class="card-text">
+                            <p>@category!.Name</p>
+                            <p class="card-text">Age: @animal.Age</p>
+                            <p>@animal.Description</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <input type="hidden" value="@animal.AnimalId" name="id"/>
+        <input type="submit" value="Delete" class="btn btn-danger"/>       
+     </form>
+</div>
+    
+</body>
+</html>

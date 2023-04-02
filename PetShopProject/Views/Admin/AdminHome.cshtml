@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "_Layout";
+    var animals = ViewData["animals"] as List<Animal>;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="container text-center" style="margin-left:-30px">
+        <div class="row row-cols-6">
+            <div class="col">
+                <div class="dropdown" style="margin-bottom:12px">
+                    <a class="btn btn-secondary dropdown-toggle" style="width:150px;font-size:20px;color:dodgerblue;background-color:aliceblue;height:44px" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                         Category</a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" asp-controller="Admin" asp-action="AdminHome"style="width:150px">None</a></li>
+                        <li><a class="dropdown-item" asp-controller="Admin" asp-action="AdminFish" style="width:150px">Fish</a></li>
+                        <li><a class="dropdown-item" asp-controller="Admin" asp-action="AdminMammal" style="width:150px">Mammal</a></li>
+                        <li><a class="dropdown-item" asp-controller="Admin" asp-action="AdminReptile" style="width:150px">Reptile</a></li>
+                        <li><a class="dropdown-item" asp-controller="Admin" asp-action="AdminAmphibian" style="width:150px">Amphibian</a></li>
+                        <li><a class="dropdown-item" asp-controller="Admin" asp-action="AdminBird" style="width:150px">Bird</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div style="margin-bottom:12px">
+                    <a asp-controller="Admin" asp-action="Add" class="btn btn-primary" style="width:200px;height:44px">Add new Animal</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    @foreach (Animal animal in animals!)
+    {
+        <div class="card mb-3 shadow p-3 mb-5 bg-body-tertiary rounded " data-aos="zoom-in-up">
+            <img src="\@animal.ImageName" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">@animal.Name</h4>
+                <h5 class="card-title">Age: @animal.Age</h5>
+                <p class="card-text">
+                    <a asp-controller="Admin" asp-action="Edit" asp-route-id="@animal.AnimalId" class="btn btn-primary">Edit</a>
+                    <a asp-controller="Admin" asp-action="Delete" asp-route-id="@animal.AnimalId" class="btn btn-primary">Delete</a>
+                </p>
+            </div>
+        </div>
+    }
+</body>
+</html>

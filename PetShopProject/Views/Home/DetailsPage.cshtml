@@ -1,0 +1,91 @@
+﻿@model Comment
+@{
+    Layout = "_Layout";
+    var animal = ViewBag.animalDetails as Animal;
+    var comments = ViewBag.comments as List<Comment>;
+    var category = ViewBag.category as Category;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"  />
+    <link rel="stylesheet" href="/css/site.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <script src="/js/site.js"></script>
+    <title>DetailsPage</title>
+</head>
+<body>
+    <div>
+        <a asp-controller="Catalog" asp-action="CatalogPage" class="btn btn-primary" style="width:180px">Back to Catalog</a>
+    </div>
+     <div>
+        <div class="card shadow p-3 mb-5 bg-body-tertiary rounded" data-aos="flip-down" style="width:500;">
+            <img src="\@animal.ImageName" class="card-img-top" alt="..." width="250">
+            <div class="card-body">
+                <h5 class="card-title">@animal.Name</h5>
+                <div class="card-text">
+                    <p>Age: @animal.Age</p>
+                    <p>@category!.Name</p>
+                    <p>@animal.Description</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Show Comments
+            </button>
+        </div>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body shadow p-3 mb-5 bg-body-tertiary rounded">
+                <ul class="list-group">
+                    @foreach (var comm in comments!)
+                    {
+                   
+                        <li class="list-group-item list-group-item-action">
+                            <div class="card-body">
+                                <div class="card-text">
+                                    <p class="card-text"> @comm.CommentText</p>
+                                        <p class="card-text" style="margin-top:40px">
+                                            <form asp-action="AddLike" method="post">
+                                                <input value="@comm.commentId" hidden name="Id">
+                                                <button class="fa fa-heart buttLike" style="font-size:24px" id="likeClick">@comm.Likes</button>
+                                                <span id="sp" name="@comm.commentId">liked!</span>
+                                            </form>      
+                                        </p>                           
+                                    <p class="card-text" style="position: absolute;bottom: 8px;right:16px;">
+                                        <small class="text-muted">
+                                            <span style="font-size:18px" >@comm.CommentDate.ToString())</span>
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    }              
+                </ul>
+                
+                
+            </div>
+            <div >
+                <form asp-action="AddComment" method="post">
+                    <div>
+                        <input asp-for="CommentText" class="form-control" placeholder="Write A Comment"/>
+                        <span asp-validation-for="CommentText" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <input type="hidden" asp-for="AnimalId" class="form-control" value="@animal.AnimalId"/>
+                        <span asp-validation-for="AnimalId" class="text-danger"></span>
+                    </div>
+                    <input asp-for="CommentDate" hidden/>
+                    <input asp-for="Likes" hidden value="0"/>
+                    <button type="submit" class="btn btn-primary" style="width:150px">Add Comment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>

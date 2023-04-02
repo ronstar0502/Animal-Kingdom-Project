@@ -1,0 +1,55 @@
+﻿@model PetShopProject.Models.AnimalViewModel
+@{
+    Layout = "_Layout";
+    var animal = ViewBag.animalDetails as Animal;
+    var category = ViewBag.Category as Category;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <div>
+        <a asp-controller="Admin" asp-action="AdminHome" style="width:250px" class="btn btn-primary">Back to Admin Page</a>
+    </div>
+
+    <div>
+        <form asp-action="EditAnimal" method="post" enctype="multipart/form-data">
+            <input asp-for="Animal.AnimalId" hidden value="@animal.AnimalId" />
+            <input asp-for="Animal.CategoryId" hidden value="@animal.CategoryId"/>
+            <input asp-for="Animal.Name" hidden value="@animal.Name" />
+            <input asp-for="Image" hidden />
+            <div class="card shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 500;">               
+                <div class="card-body">
+                    <h5 class="card-title">@animal.Name</h5>
+                    <div class="card-text">
+                        <h5 class="card-title">@category!.Name</h5>
+                        <div class="mb-3">
+                            <label asp-for="Animal.Age"></label>
+                            <input asp-for="Animal.Age" class="form-control" value="@animal.Age" />
+                            <span asp-validation-for="Animal.Age" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Animal.Description"></label>
+                            <input asp-for="Animal.Description" class="form-control" value="@animal.Description" />
+                            <span asp-validation-for="Animal.Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <img src="\@animal.ImageName" class="card-img-top" alt="..." width="250">
+                <div class="mb-3">                  
+                    <label asp-for="Animal"></label>
+                    <input type="file" name="photo" class="form-control"/>
+                </div>
+            </div>
+            <input type="submit" value="Save Changes" class="btn btn-primary" />
+        </form>
+    </div>
+
+
+</body>
+</html>

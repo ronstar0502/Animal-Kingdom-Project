@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "_Layout";
+    var animals = ViewBag.Animals as List<Animal>;
+    var categories = ViewBag.Categories as List<Category>;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/css/site.css"/>
+    <title>CatalogPage</title>
+</head>
+<body >
+    <div class="dropdown" >
+        <a class="btn btn-secondary dropdown-toggle" style="width:140px;margin-bottom:12px;font-size:20px;color:dodgerblue;background-color:aliceblue" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Category</a>
+
+            <ul class="dropdown-menu">
+            <li><a class="dropdown-item" asp-controller="Catalog" asp-action="CatalogPage"style="width:150px">None</a></li>
+            <li><a class="dropdown-item" asp-controller="Catalog" asp-action="Fish" style="width:150px">Fish</a></li>
+            <li><a class="dropdown-item" asp-controller="Catalog" asp-action="Mammal" style="width:150px">Mammal</a></li>
+            <li><a class="dropdown-item" asp-controller="Catalog" asp-action="Reptile" style="width:150px">Reptile</a></li>
+            <li><a class="dropdown-item" asp-controller="Catalog" asp-action="Amphibian" style="width:150px">Amphibian</a></li>
+            <li><a class="dropdown-item" asp-controller="Catalog" asp-action="Bird"style="width:150px">Bird</a></li>
+             </ul>
+    </div>
+    <div>
+        @foreach (Animal animal in animals!)
+        {
+        <div class="card mb-3 shadow p-3 mb-5 bg-body-tertiary rounded" data-aos="zoom-in-up">
+              <img src="\@animal.ImageName" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h4 class="card-title">@animal.Name</h4>
+                <h5 class="card-title">Age: @animal.Age</h5>
+                <p class="card-text"><a asp-controller="Home" asp-action="DetailsPage" asp-route-id="@animal.AnimalId" class="btn btn-primary" style="width:150px">Details</a></p>
+               </div>
+        </div>
+        }  
+    </div>
+         
+</body>
+</html>

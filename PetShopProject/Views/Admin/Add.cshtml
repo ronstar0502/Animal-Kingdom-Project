@@ -1,0 +1,65 @@
+﻿@model PetShopProject.Models.AnimalViewModel
+
+@{
+    Layout = "_Layout";
+    var categories = ViewBag.categories;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+    <div>
+        <div>
+            <a asp-controller="Admin" asp-action="AdminHome" style="width:250px" class="btn btn-primary">Back Admin Home</a>
+        </div>
+        <form asp-action="CreateAnimal" method="post" enctype="multipart/form-data" style="background-color:white">
+            <input asp-for="Animal.AnimalId" hidden/>
+            <input asp-for="Image" hidden />
+            <div class="border p-3 mt-4">
+            <div class="row pb-2">
+                <h2 class="text-primary">Add Animal</h2>
+                <hr />
+            </div>
+            <div asp-validation-summary="All" style="color:red"></div>
+            <div class="mb-3">
+                    <label asp-for="Animal.Name"></label>
+                    <input asp-for="Animal.Name" class="form-control" style="border-width:3px;border-color:cornflowerblue" />
+                    <span asp-validation-for="Animal.Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                    <label asp-for="Animal.CategoryId">Category: </label>
+                    <select asp-for="Animal.CategoryId" class="form-select" aria-label="Default select example" style="border-width:3px;border-color:cornflowerblue">
+                        <option selected value="1">Fish</option>
+                        <option value="2">Reptile</option>
+                        <option value="3">Mammal</option>
+                        <option value="4">Bird</option>
+                        <option value="5">Amphibian</option>
+                    </select>
+                    <span asp-validation-for="Animal.CategoryId" class="text-danger"></span>
+            </div>
+          <div class="mb-3">
+                    <label asp-for="Animal.Age"></label>
+                    <input asp-for="Animal.Age" class="form-control" style="border-width:3px;border-color:cornflowerblue" />
+                    <span asp-validation-for="Animal.Age" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                    <label asp-for="Animal.Description"></label>
+                    <input asp-for="Animal.Description" class="form-control" style="border-width:3px;border-color:cornflowerblue" />
+                    <span asp-validation-for="Animal.Description" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                    <label asp-for="Animal.ImageName"></label>
+                    <input type="file" name="photo" class="form-control" value="Animal.ImageName" />
+                </div>
+        
+            <button type="submit" class="btn btn-primary" style="width:150px">Add new Animal</button>
+        </div>
+    </form>
+    </div>
+</body>
+</html>
