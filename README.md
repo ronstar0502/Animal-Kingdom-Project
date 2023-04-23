@@ -6,26 +6,26 @@
 </div>
 
 <div>
-  <p>Home Page</p>
+  <p><strong>Home Page</strong></p>
   <img src="https://github.com/ronstar0502/projects-pictures/blob/main/kingdomHome.png?raw=true">
 </div>
 <div>
-  <p>Catalog Page</p>
+  <p><strong>Catalog Page</strong></p>
   <img src="https://github.com/ronstar0502/projects-pictures/blob/main/catalogPage.png?raw=true">
 </div>
 <div>
-  <p>Details Page</p>
+  <p><strong>Details Page</strong></p>
   <img src="https://github.com/ronstar0502/projects-pictures/blob/main/animalDetails.png?raw=true">
 </div>
 <div>
-  <p>Admin Page - Add adnimal</p>
+  <p><strong>Admin Page - Add adnimal</strong></p>
   <img src="https://github.com/ronstar0502/projects-pictures/blob/main/admin-add.png?raw=true">
 </div>
 <div>
-  <p>Admin Page - Edit animal</p>
+  <p><strong>Admin Page - Edit animal</strong></p>
   <img src="https://github.com/ronstar0502/projects-pictures/blob/main/admin-edit.png?raw=true">
 </div>
 <div>
-  <p>Admin Page - Delete animal</p>
+  <p><strong>Admin Page - Delete animal</strong></p>
   <img src="https://github.com/ronstar0502/projects-pictures/blob/main/admin-delete.png?raw=true">
 </div>
